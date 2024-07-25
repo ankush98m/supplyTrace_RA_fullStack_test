@@ -1,47 +1,97 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Container, Typography, Grid, Card, CardContent, List, ListItem, ListItemText } from '@mui/material';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import CompanyCard from './CompanyCard';
-import MapComponent from './MapComponent';
+import React, { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { Container, Typography, Grid, Box, Button } from "@mui/material";
+import CompanyCard from "./CompanyCard";
+import MapComponent from "./MapComponent";
 
 export default function CompanyDetails() {
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   // Mock data
   const [company, setCompany] = useState({
-    name: 'Example Company',
-    address: '123 Example Street',
-    mainLocation: { lat: 40.7128, lng: -74.0060 },
+    name: "Example Company",
+    address: "123 Example Street",
+    mainLocation: { lat: 40.7128, lng: -74.006 },
     locations: [
-      { name: 'Location 1', address: '456 Another St', lat: 40.7128, lng: -73.0060 },
-      { name: 'Location 2', address: '789 Another St', lat: 41.7128, lng: -72.0060 },
-      { name: 'Location 3', address: '789 Another St', lat: 41.7128, lng: -72.0060 },
-    ]
+      {
+        name: "Location 1",
+        address: "456 Another St",
+        lat: 40.7128,
+        lng: -73.006,
+      },
+      {
+        name: "Location 2",
+        address: "789 Another St",
+        lat: 41.7128,
+        lng: -72.006,
+      },
+      {
+        name: "Location 3",
+        address: "789 Another St",
+        lat: 41.7128,
+        lng: -72.006,
+      },
+    ],
   });
 
-    const { id } = useParams();
+  const handleBack = () => {
+    navigate("/");
+  };
+
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom>
-        {company.name}
-      </Typography>
-      <Typography variant="h6" gutterBottom>
-        {company.address}
-      </Typography>
-        <Grid spacing={4}>
-          <MapComponent position={company.mainLocation} name={company.name} />
-        </Grid>
-      <h6 style={{fontSize: '24px'}}>Other Locations</h6>
-      <Grid container spacing={2}>
-        
-          {company.locations.map((c,i)=>{
-            return(
-              <Grid spacing={2} xs={12} sm={6} md={6} lg={4}>
-                <CompanyCard name={c.name} address={c.address} lat={c.lat} lng={c.lng}/>
+    <>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleBack}
+        style={{
+          marginTop: "10px",
+        }}
+      >
+        Back to Companies
+      </Button>
+
+      <Container>
+        <Box mt={6} mb={4}>
+          <Typography variant="h4" gutterBottom>
+            {company.name}
+          </Typography>
+          <Typography variant="h6" gutterBottom>
+            {company.address}
+          </Typography>
+        </Box>
+
+        <Box mb={4}>
+          <Grid container spacing={4}>
+            <Grid item xs={12}>
+              <MapComponent
+                position={company.mainLocation}
+                name={company.name}
+              />
+            </Grid>
+          </Grid>
+        </Box>
+
+        <Box mb={4}>
+          <Typography variant="h6" style={{ fontSize: "24px" }}>
+            Other Locations
+          </Typography>
+
+          <Grid container spacing={2}>
+            {company.locations.map((location, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <CompanyCard
+                  name={location.name}
+                  address={location.address}
+                  lat={location.lat}
+                  lng={location.lng}
+                />
               </Grid>
-            )
-            })}
-      </Grid>
-    </Container>
-  )
+            ))}
+          </Grid>
+        </Box>
+      </Container>
+    </>
+  );
 }
