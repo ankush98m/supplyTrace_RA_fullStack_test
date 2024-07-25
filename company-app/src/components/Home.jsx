@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { List, ListItem, ListItemText, Container, Button, TextField, Box } from "@mui/material";
+import { List, ListItem, Container, Box, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import CompanyListCard from "./CompanyListCard";
+
 
 export default function Home() {
   const [companies, setCompanies] = useState([]);
@@ -51,14 +53,18 @@ export default function Home() {
             onChange={(e) => setSearch(e.target.value)}
           />
         </Box>
-        <h2 style={{fontSize: '32px'}}>COMPANIES</h2>
+        <h2 style={{fontSize: '32px'}}>LIST OF COMPANIES</h2>
         <List>
-          {filteredCompanies.map((company) => (
-            <ListItem key={company.id} onClick={() => navigate(`/${company.id}`)}>
-              <ListItemText primary={company.name} secondary={company.address} />
-            </ListItem>
-          ))}
-        </List>
+        {filteredCompanies.map((company) => (
+          <ListItem
+            key={company.id}
+            button
+            onClick={() => navigate(`/${company.id}`)}
+          >
+            <CompanyListCard company={company}/>
+          </ListItem>
+        ))}
+      </List>
       </Container>
     </>
   );
