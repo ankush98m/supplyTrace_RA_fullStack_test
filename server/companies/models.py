@@ -8,4 +8,4 @@ class Companies(models.Model):
     longitude = models.FloatField(null=True, blank=True)
 
     def __str__(self):
-        return self.namex
+        return self.name
