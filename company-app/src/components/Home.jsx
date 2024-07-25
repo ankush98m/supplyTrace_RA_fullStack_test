@@ -8,8 +8,8 @@ export default function Home() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Mock API url
-  const apiUrl = "https://jsonplaceholder.typicode.com/users";
+  // Company API end point
+  const apiUrl = "http://127.0.0.1:8000/companies/";
 
   // function to fetch data of all the companies
   const fetchAllCompanies = async () => {
