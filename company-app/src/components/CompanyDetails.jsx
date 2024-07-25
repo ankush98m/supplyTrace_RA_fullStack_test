@@ -28,7 +28,7 @@ export default function CompanyDetails() {
       },
       {
         name: "Location 3",
-        address: "789 Another St",
+        address: "221 Another St",
         lat: 41.7128,
         lng: -72.006,
       },
@@ -66,7 +66,8 @@ export default function CompanyDetails() {
           <Grid container spacing={4}>
             <Grid item xs={12}>
               <MapComponent
-                position={company.mainLocation}
+                mainLocation={company.mainLocation}
+                locations={company.locations}
                 name={company.name}
               />
             </Grid>
