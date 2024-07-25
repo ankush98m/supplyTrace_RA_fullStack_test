@@ -44,6 +44,7 @@ export default function Home() {
   return (
     <>
       <Container>
+        {/* ---------- searchbar ---------*/}
       <Box mb={2} mt={4}>
           <TextField
             label="Search Companies"
@@ -54,11 +55,12 @@ export default function Home() {
           />
         </Box>
         <h2 style={{fontSize: '32px'}}>LIST OF COMPANIES</h2>
+
+        {/* ---------- display list ---------*/}
         <List>
         {filteredCompanies.map((company) => (
           <ListItem
             key={company.id}
-            button
             onClick={() => navigate(`/${company.id}`)}
           >
             <CompanyListCard company={company}/>
