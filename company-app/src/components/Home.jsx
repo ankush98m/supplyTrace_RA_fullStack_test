@@ -19,6 +19,7 @@ export default function Home() {
         throw new Error("500 Service Error");
       }
       const data = await res.json();
+      console.log(data)
       setCompanies(data);
     } catch (error) {
       setError(error);
@@ -36,9 +37,7 @@ export default function Home() {
             <List>
                 {companies.map((company) => (
                 <ListItem key={company.id}>
-                    <Button onClick={() => navigate(`/${company.id}`)}>
-                        <ListItemText primary={company.name} secondary={company.email} />
-                    </Button>
+                    <ListItemText onClick={() => navigate(`/${company.id}`)} primary={company.name} secondary={company.address} />
                 </ListItem>
                 ))}
             </List>
