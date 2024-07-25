@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Container, Typography, Grid, Card, CardContent, List, ListItem, ListItemText } from '@mui/material';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import CompanyCard from './CompanyCard';
+import MapComponent from './MapComponent';
 
 export default function CompanyDetails() {
 
@@ -27,6 +28,9 @@ export default function CompanyDetails() {
       <Typography variant="h6" gutterBottom>
         {company.address}
       </Typography>
+        <Grid spacing={4}>
+          <MapComponent position={company.mainLocation} name={company.name} />
+        </Grid>
       <h6 style={{fontSize: '24px'}}>Other Locations</h6>
       <Grid container spacing={2}>
         
