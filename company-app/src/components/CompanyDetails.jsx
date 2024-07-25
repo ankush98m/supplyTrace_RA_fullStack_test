@@ -14,6 +14,7 @@ export default function CompanyDetails() {
     locations: [
       { name: 'Location 1', address: '456 Another St', lat: 40.7128, lng: -73.0060 },
       { name: 'Location 2', address: '789 Another St', lat: 41.7128, lng: -72.0060 },
+      { name: 'Location 3', address: '789 Another St', lat: 41.7128, lng: -72.0060 },
     ]
   });
 
@@ -26,11 +27,14 @@ export default function CompanyDetails() {
       <Typography variant="h6" gutterBottom>
         {company.address}
       </Typography>
-      <Grid container spacing={2} xs={12} sm={6} md={6} lg={6}>
+      <h6 style={{fontSize: '24px'}}>Other Locations</h6>
+      <Grid container spacing={2}>
         
           {company.locations.map((c,i)=>{
             return(
-              <CompanyCard name={c.name} address={c.address} lat={c.lat} lng={c.lng}/>
+              <Grid spacing={2} xs={12} sm={6} md={6} lg={4}>
+                <CompanyCard name={c.name} address={c.address} lat={c.lat} lng={c.lng}/>
+              </Grid>
             )
             })}
       </Grid>

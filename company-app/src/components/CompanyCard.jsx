@@ -21,7 +21,7 @@ export default function CompanyCard({name, address, lat, lng}) {
       );
   return (
     <>
-    <Card variant="outlined">{card}</Card>
+    <Card sx={{margin:'2%'}}variant="outlined">{card}</Card>
     </>
   )
 }
