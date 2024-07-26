@@ -34,6 +34,7 @@ CORS_ALLOW_CREDENTIALS = True
 ALLOWED_HOSTS = [
     'localhost',        # Allows requests from localhost
     '127.0.0.1',        # Allows requests from the local IP address
+    '0.0.0.0',
 ]
 
 
