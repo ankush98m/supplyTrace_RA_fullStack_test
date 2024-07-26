@@ -1,7 +1,7 @@
 import csv
 from django.core.management.base import BaseCommand
 import pandas as pd
-from companies.models import Companies
+from companies.models import Companies, Locations
 
 class Command(BaseCommand):
     help = 'Load data from CSV files'
@@ -17,8 +17,22 @@ class Command(BaseCommand):
         companies_data = pd.read_csv(companies_csv)
         locations_data = pd.read_csv(locations_csv)
 
+        # dictionary to map company IDs to Company objects
+        company_id_map = {}
+
         for index, row in companies_data.iterrows():
-            Companies.objects.create(
+            company = Companies.objects.create(
+                name=row['name'],
+                address=row['address'],
+                latitude=row['latitude'],
+                longitude=row['longitude']
+            )
+
+        for index, row in locations_data.iterrows():
+            company_id = row['company_id']
+            company = Companies.objects.get(id=company_id)
+            Locations.objects.create(
+                company=company,
                 name=row['name'],
                 address=row['address'],
                 latitude=row['latitude'],
