@@ -34,34 +34,6 @@ export default function CompanyDetails() {
     fetchCompanyDetails();
   }, [id]);
 
-
-  // Mock data
-  const [company, setCompany] = useState({
-    name: "Example Company",
-    address: "123 Example Street",
-    mainLocation: { lat: 40.7128, lng: -74.006 },
-    locations: [
-      {
-        name: "Location 1",
-        address: "456 Another St",
-        lat: 40.7128,
-        lng: -73.006,
-      },
-      {
-        name: "Location 2",
-        address: "789 Another St",
-        lat: 41.7128,
-        lng: -72.006,
-      },
-      {
-        name: "Location 3",
-        address: "221 Another St",
-        lat: 41.7128,
-        lng: -72.006,
-      },
-    ],
-  });
-
   const handleBack = () => {
     navigate("/");
   };
@@ -93,11 +65,7 @@ export default function CompanyDetails() {
             <Grid container spacing={4}>
               <Grid item xs={12}>
                 <MapComponent
-                  lat={companyDetails?.latitude}
-                  lng={companyDetails?.longitude}
-                  name={companyDetails?.name}
-                  locations={company.locations}
-                  
+                  locations={companyDetails?.locations}
                 />
               </Grid>
             </Grid>
@@ -106,17 +74,17 @@ export default function CompanyDetails() {
 
         <Box mb={4}>
           <Typography variant="h6" style={{ fontSize: "24px" }}>
-            Other Locations
+            All Locations
           </Typography>
 
           <Grid container spacing={2}>
-            {company.locations.map((location, index) => (
+            {companyDetails?.locations.map((location, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <CompanyCard
                   name={location.name}
                   address={location.address}
-                  lat={location.lat}
-                  lng={location.lng}
+                  lat={location.latitude}
+                  lng={location.longitude}
                 />
               </Grid>
             ))}
