@@ -59,8 +59,9 @@ export default function CompanyDetails() {
       >
         Back to Companies
       </Button>
-
+      {companyDetails? 
       <Container>
+      
         <Box mt={6} mb={4}>
           <Typography variant="h4" gutterBottom>
             {companyDetails?.name}
@@ -69,12 +70,13 @@ export default function CompanyDetails() {
             {companyDetails?.address}
           </Typography>
         </Box>
+
         <Divider sx={{
           marginTop: '-20px',
           marginBottom: '10px',
           border: '2px solid black'
           }} />
-        {companyDetails? 
+        
           <Box mb={4}>
             <Grid container spacing={4}>
               <Grid item xs={12}>
@@ -84,14 +86,15 @@ export default function CompanyDetails() {
                 />
               </Grid>
             </Grid>
-          </Box> : null
-        }
-    
+          </Box> 
+        
+        
         <Box mb={4}>
+          
           <Typography variant="h6" style={{ fontSize: "24px" }}>
             All Locations
           </Typography>
-
+          
           <Grid container spacing={2}>
             {companyDetails?.locations.map((location, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
@@ -105,8 +108,11 @@ export default function CompanyDetails() {
               </Grid>
             ))} 
           </Grid>
-        </Box>
-      </Container>
+        </Box> 
+        
+      
+      </Container> : <h5>There are no details to display</h5>
+  }
     </>
   );
 }
