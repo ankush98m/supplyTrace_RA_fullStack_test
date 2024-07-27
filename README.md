@@ -16,5 +16,8 @@ The application is developed using react in the frontend and django in the front
 ## How to Run
 - Open Terminal and go to source directory of the project
 - Run command: docker-compose up --build
+- if react app doesn't start
+    - go to comapny-app directory
+    - run command in terminal : npm install
 - React app will run in localhost:3000
 - Django app will run in localhost:8000
