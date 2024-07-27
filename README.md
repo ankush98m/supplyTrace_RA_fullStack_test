@@ -2,6 +2,11 @@
 A small application to display the companies in a list and to display all the locations of a company.
 The application is developed using react in the frontend and django in the frontend.
 
+### Features
+- Click on the company to see its company details
+- All the locations are marked on the map, zoom out or in to view the location
+- Click on the location to directly find the location on the map
+
 ## Prequesites
 - Install Python 3.9.x
 - Install Node and npm (node package manager)
