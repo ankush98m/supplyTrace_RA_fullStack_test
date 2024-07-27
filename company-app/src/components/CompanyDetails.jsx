@@ -8,6 +8,7 @@ export default function CompanyDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [companyDetails, setCompanyDetails] = useState(null);
+  const [mapCenter, setMapCenter] = useState(null);
 
   const companyAPI_URL = `http://127.0.0.1:8000/companies/${id}/`
 
@@ -28,13 +29,22 @@ export default function CompanyDetails() {
     const fetchCompanyDetails = async () => {
       const data = await getCompanyById(id);
       setCompanyDetails(data);
+      if (data?.locations?.length > 0) {
+        setMapCenter([data.locations[0].latitude, data.locations[0].longitude]);
+      }
     };
 
     fetchCompanyDetails();
   }, [id]);
 
+  // function to naviagte to list of companies
   const handleBack = () => {
     navigate("/");
+  };
+
+  const handleCardClick = (latitude, longitude) => {
+    setMapCenter([latitude, longitude]);
+    
   };
 
   return (
@@ -65,6 +75,7 @@ export default function CompanyDetails() {
               <Grid item xs={12}>
                 <MapComponent
                   locations={companyDetails?.locations}
+                  center={mapCenter}
                 />
               </Grid>
             </Grid>
@@ -84,6 +95,7 @@ export default function CompanyDetails() {
                   address={location.address}
                   lat={location.latitude}
                   lng={location.longitude}
+                  onClick={() => handleCardClick(location.latitude, location.longitude)}
                 />
               </Grid>
             ))}

@@ -1,11 +1,11 @@
 import React from 'react'
-import { Container, Typography, Grid, Card, CardContent, List, ListItem, ListItemText } from '@mui/material';
+import { Typography, Card, CardContent,} from '@mui/material';
 
 // card component to display the details of the company for a particular address
-export default function CompanyCard({name, address, lat, lng}) {
+export default function CompanyCard({name, address, lat, lng, onClick}) {
     const card = (
         <React.Fragment>
-          <CardContent>
+          <CardContent onClick={onClick}>
             <Typography variant="h5" component="div">
               {name}
             </Typography>
