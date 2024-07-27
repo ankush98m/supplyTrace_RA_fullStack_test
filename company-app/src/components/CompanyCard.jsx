@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Typography, Grid, Card, CardContent, List, ListItem, ListItemText } from '@mui/material';
 
+// card component to display the details of the company for a particular address
 export default function CompanyCard({name, address, lat, lng}) {
     const card = (
         <React.Fragment>

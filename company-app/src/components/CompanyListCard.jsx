@@ -3,7 +3,7 @@ import { ArrowForward } from '@mui/icons-material';
 import {Card, CardContent, Typography, IconButton} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-
+// card component to display company in a list
 export default function CompanyListCard({company}) {
     const {id, name, address} = company;
     const navigate = useNavigate();

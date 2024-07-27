@@ -18,7 +18,6 @@ export default function CompanyDetails() {
         throw new Error('500 Service Error');
       }
       const data = await res.json();
-      console.log("data", data);
       return data;
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
