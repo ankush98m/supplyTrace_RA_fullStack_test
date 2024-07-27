@@ -14,11 +14,7 @@ The application is developed using react in the frontend and django in the front
 - Install IDE (preferrably VS code)
 
 ## How to Run
-- go to server directory
-- Run migrations in the terminal file
-  -  python manage.py makemigrations (windows) python3 manage.py makemigrations (macos)
-  -  python manage.py migrate (windows) python3 manage.py migrate (macos)
-- go to source directory of the project
+- Open Terminal and go to source directory of the project
 - Run command: docker-compose up --build
 - React app will run in localhost:3000
 - Django app will run in localhost:8000
