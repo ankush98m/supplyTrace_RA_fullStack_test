@@ -6,6 +6,9 @@ from .models import Locations
 from django.core.exceptions import ObjectDoesNotExist
 
 # function to retrieve all the companies
+# endpoint : GET /companies
+# Response type : JSON Array
+# Error Codes : 500 - Internal server error
 def get_all_companies(request):
     try:
         companies = Companies.objects.all()
@@ -14,7 +17,10 @@ def get_all_companies(request):
     except Exception as e:
         return JsonResponse({'error': 'An error occurred while retrieving companies.', 'details': str(e)}, status=500)
 
-# function to get company details by ID
+# function to get company details by ID and all the locations of the company
+# endpoint : GET /companies/{company_id}
+# Response type : JSON Array
+# Error Code : 404 - Company Not Found, 500 - Internal Server Error
 def get_company_by_id(request, company_id):
     try:
         # Query the company with the specified company_id
