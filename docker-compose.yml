@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  # Backend service (Django)
+  backend:
+    image: python:3.9-slim
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: server
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./server:/app
+    environment:
+      - DEBUG=True
+      - DJANGO_SETTINGS_MODULE=server.settings
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+  # Frontend service (React)
+  frontend:
+    image: node:20.15.1
+    build:
+      context: ./company-app
+      dockerfile: Dockerfile
+    container_name: company-app-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./company-app:/app
+    command: ["npm", "start"]
