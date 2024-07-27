@@ -13,8 +13,6 @@ The application is developed using react in the frontend and django in the front
 - Run migrations in the terminal file
   -  python manage.py makemigrations (windows) python3 manage.py makemigrations (macos)
   -  python manage.py migrate (windows) python3 manage.py migrate (macos)
-- go to company-app directory
-- install node modules (run command in terminal: npm install)
 - go to source directory of the project
 - Run command: docker-compose up --build
 - React app will run in localhost:3000
