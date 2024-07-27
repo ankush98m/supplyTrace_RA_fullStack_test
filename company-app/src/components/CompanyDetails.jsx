@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Container, Typography, Grid, Box, Button } from "@mui/material";
+import { Container, Typography, Grid, Box, Button, Divider } from "@mui/material";
 import CompanyCard from "./CompanyCard";
 import MapComponent from "./MapComponent";
 
@@ -69,6 +69,11 @@ export default function CompanyDetails() {
             {companyDetails?.address}
           </Typography>
         </Box>
+        <Divider sx={{
+          marginTop: '-20px',
+          marginBottom: '10px',
+          border: '2px solid black'
+          }} />
         {companyDetails? 
           <Box mb={4}>
             <Grid container spacing={4}>
@@ -81,7 +86,7 @@ export default function CompanyDetails() {
             </Grid>
           </Box> : null
         }
-
+    
         <Box mb={4}>
           <Typography variant="h6" style={{ fontSize: "24px" }}>
             All Locations
@@ -98,7 +103,7 @@ export default function CompanyDetails() {
                   onClick={() => handleCardClick(location.latitude, location.longitude)}
                 />
               </Grid>
-            ))}
+            ))} 
           </Grid>
         </Box>
       </Container>

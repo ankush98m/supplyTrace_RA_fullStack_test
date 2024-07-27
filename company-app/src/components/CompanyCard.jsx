@@ -22,7 +22,17 @@ export default function CompanyCard({name, address, lat, lng, onClick}) {
       );
   return (
     <>
-    <Card sx={{margin:'2%'}}variant="outlined">{card}</Card>
+    <Card sx={{
+        margin: '2%',
+        transition: 'transform 0.2s, box-shadow 0.2s',
+        '&:hover': {
+          transform: 'scale(1.05)',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+          cursor: 'pointer',
+        },
+      }}
+       variant="outlined"
+       >{card}</Card>
     </>
   )
 }
