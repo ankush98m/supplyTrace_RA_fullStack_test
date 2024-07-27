@@ -77,6 +77,8 @@ export default function CompanyDetails() {
           border: '2px solid black'
           }} />
         
+        {companyDetails.locations.length > 0 ? (
+          <>
           <Box mb={4}>
             <Grid container spacing={4}>
               <Grid item xs={12}>
@@ -109,6 +111,12 @@ export default function CompanyDetails() {
             ))} 
           </Grid>
         </Box> 
+        </>) :
+        (
+          <Typography variant="h6" color="textSecondary">
+            No locations available for this company.
+          </Typography>
+        )}
         
       
       </Container> : <h5>There are no details to display</h5>
